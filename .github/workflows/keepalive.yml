@@ -1,0 +1,15 @@
+name: Keep Hugging Face Space Alive
+
+on:
+  schedule:
+    # Chạy mỗi 30 phút
+    - cron: "*/30 * * * *"
+  workflow_dispatch: # Cho phép chạy thủ công
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send request to Space
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://kawaiicassie-n8n.hf.space
